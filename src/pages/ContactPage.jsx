@@ -10,11 +10,48 @@ const fadeInUp = {
 
 export default function ContactPage() {
   const [formState, setFormState] = useState('idle');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    service: 'Full Stack Development',
+    message: ''
+  });
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormState('sending');
-    setTimeout(() => setFormState('sent'), 1500);
+    
+    try {
+      const response = await fetch("https://formspree.io/f/xgorgjjb", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setFormState('sent');
+        setFormData({
+          name: '',
+          email: '',
+          service: 'Full Stack Development',
+          message: ''
+        });
+        // Reset state after 5 seconds to allow new submissions
+        setTimeout(() => setFormState('idle'), 5000);
+      } else {
+        setFormState('idle');
+      }
+    } catch (error) {
+      setFormState('idle');
+    }
   };
 
   return (
@@ -55,7 +92,7 @@ export default function ContactPage() {
         <motion.div 
           {...fadeInUp} 
           transition={{ delay: 0.2 }}
-          className="bg-slate-50 p-10 md:p-16 rounded-[4rem] border border-slate-100"
+          className="bg-slate-50 p-10 md:p-16 rounded-[4rem] border border-slate-100 relative overflow-hidden"
         >
           <div className="mb-10 flex items-center gap-4">
              <MessageSquare className="text-brand-primary" />
@@ -68,6 +105,9 @@ export default function ContactPage() {
                 <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Full Name</label>
                 <input 
                   type="text" 
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   required
                   placeholder="John Doe"
                   className="w-full bg-white border border-slate-200 rounded-xl px-6 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/20 hover:border-brand-primary/30 transition-all font-medium" 
@@ -77,6 +117,9 @@ export default function ContactPage() {
                 <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Email Address</label>
                 <input 
                   type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                   placeholder="john@example.com"
                   className="w-full bg-white border border-slate-200 rounded-xl px-6 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/20 hover:border-brand-primary/30 transition-all font-medium" 
@@ -86,14 +129,24 @@ export default function ContactPage() {
             
             <div className="space-y-2">
               <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Select Service</label>
-              <select className="w-full bg-white border border-slate-200 rounded-xl px-6 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/20 hover:border-brand-primary/30 transition-all font-medium appearance-none">
+              <select 
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
+                className="w-full bg-white border border-slate-200 rounded-xl px-6 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/20 hover:border-brand-primary/30 transition-all font-medium appearance-none"
+              >
                 <option>Full Stack Development</option>
+                <option>System Architecture</option>
+                <option>UI/UX Engineering</option>
               </select>
             </div>
 
             <div className="space-y-2">
               <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Your Message</label>
               <textarea 
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 rows={4}
                 required
                 placeholder="Tell me about your project..."
@@ -104,10 +157,12 @@ export default function ContactPage() {
             <button 
               type="submit"
               disabled={formState !== 'idle'}
-              className="w-full py-5 bg-brand-primary text-white text-[11px] font-black uppercase tracking-widest rounded-xl shadow-lg shadow-indigo-100 hover:bg-brand-primary-dark transition-all flex items-center justify-center gap-3"
+              className={`w-full py-5 text-white text-[11px] font-black uppercase tracking-widest rounded-xl shadow-lg transition-all flex items-center justify-center gap-3 ${
+                formState === 'sent' ? 'bg-emerald-500 shadow-emerald-100' : 'bg-brand-primary shadow-indigo-100 hover:bg-brand-primary-dark'
+              }`}
             >
               {formState === 'idle' && <>Send Message <Send size={16} /></>}
-              {formState === 'sending' && <>Sending...</>}
+              {formState === 'sending' && <>Sending Message...</>}
               {formState === 'sent' && <>Message Sent Successfully!</>}
             </button>
           </form>
