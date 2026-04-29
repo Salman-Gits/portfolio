@@ -41,7 +41,7 @@ export default function Home() {
             
             <h1 className="text-6xl md:text-8xl font-black text-slate-900 leading-[1.05] mb-8 font-serif">
               I'm <span className="italic font-normal">the architect</span> <br />
-              Salman.
+              Mohammed Salman M.
             </h1>
 
             <p className="text-slate-500 text-lg leading-relaxed max-w-lg mb-10 font-medium">
