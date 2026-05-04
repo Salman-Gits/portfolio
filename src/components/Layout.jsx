@@ -157,7 +157,7 @@ export default function Layout({ children }) {
           
           <div className="flex gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
              <a href="https://github.com/Salman-Gits" target="_blank" rel="noopener noreferrer" className="hover:text-brand-primary transition-all">GitHub</a>
-             <a href="https://linkedin.com/in/mohammed-salman-17b573262" target="_blank" rel="noopener noreferrer" className="hover:text-brand-primary transition-all">LinkedIn</a>
+             <a href="https://www.linkedin.com/in/mohammed-salman-m-17b573262/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-primary transition-all">LinkedIn</a>
           </div>
         </div>
       </footer>

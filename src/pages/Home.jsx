@@ -495,19 +495,20 @@ export default function Home() {
                   </a>
                   <div className="flex items-center gap-6 text-white/60 font-bold uppercase tracking-widest text-[11px]">
                      <a href="https://github.com/Salman-Gits" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Github</a>
-                     <a href="https://linkedin.com/in/mohammed-salman-17b573262" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
+                     <a href="https://www.linkedin.com/in/mohammed-salman-m-17b573262/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
                      <span>Chennai, India</span>
                   </div>
                </div>
             </div>
             
             <div className="w-full md:w-[300px]">
-               <button 
-                onClick={() => window.print()}
+               <a 
+                href="/Mohammed_Salman_Resume.pdf"
+                download="Mohammed_Salman_Resume.pdf"
                 className="w-full h-32 bg-white text-brand-primary rounded-[2rem] hover:bg-white/90 hover:scale-105 transition-all flex items-center justify-center gap-6 uppercase text-[10px] tracking-[0.4em] font-black shadow-xl"
                >
                  Resume <Download size={24} />
-               </button>
+               </a>
             </div>
          </motion.div>
       </section>
