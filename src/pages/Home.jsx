@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Download, Mail, Github, Linkedin, Award, Code, Database, Terminal, Cpu } from 'lucide-react';
+import { ArrowRight, Download, Mail, Github, Linkedin, Award, Code, Database, Terminal, Cpu, Layers } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SkillsVisualization from '../components/SkillsVisualization';
 
@@ -243,6 +243,32 @@ export default function Home() {
                      >
                        System Details
                      </Link>
+                  </div>
+               </div>
+            </div>
+
+            <div className="max-w-5xl mx-auto glass p-10 md:p-16 rounded-[4rem] flex flex-col md:flex-row-reverse gap-12 items-center text-left group hover:border-indigo-200 transition-all">
+               <div className="w-24 h-24 bg-slate-900 text-white flex items-center justify-center rounded-3xl shadow-xl shrink-0">
+                  <Layers size={40} />
+               </div>
+               <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-4">
+                     <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-[9px] font-bold uppercase tracking-widest">Client Logistics Solution</span>
+                     <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">React + Barcode Logic</span>
+                  </div>
+                  <h4 className="text-3xl font-black text-slate-900 mb-4 italic">Rental Management System</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
+                     A custom-built enterprise solution for rental operations. Features seamless <span className="text-slate-900 font-bold italic uppercase">Barcode Integration</span> for rapid asset scanning, automated time-tracking for billing, and real-time inventory status mapping.
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                     <a 
+                       href="https://rental-opal-one.vercel.app/" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="px-6 py-3 bg-slate-900 text-white font-bold rounded-xl shadow-lg text-[11px] uppercase tracking-widest flex items-center gap-2 hover:bg-slate-800 transition-all"
+                     >
+                       Explore System <ArrowRight size={14} />
+                     </a>
                   </div>
                </div>
             </div>

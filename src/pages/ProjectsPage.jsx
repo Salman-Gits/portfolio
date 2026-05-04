@@ -28,6 +28,19 @@ const projects = [
     accent: 'indigo',
     link: 'https://ecommerce-frontend-seven-sooty.vercel.app/',
     github: 'https://github.com/Salman-Gits'
+  },
+  {
+    id: '03',
+    title: 'Rental Management System',
+    tech: 'React • Barcode Scanner • Real-time Logs',
+    tag: 'Client Logistics Solution',
+    desc: 'An end-to-end rental ecosystem featuring integrated barcode scanning (physical & digital) for asset tracking. Dynamically calculates usage duration and manages incoming/outgoing inventory flow.',
+    metrics: ['Automated Barcode Auth', 'Temporal Lifecycle Logs'],
+    icon: <Layers size={32} />,
+    preview: 'Logistics Architecture',
+    accent: 'indigo',
+    link: 'https://rental-opal-one.vercel.app/',
+    github: 'https://github.com/Salman-Gits'
   }
 ];
 
