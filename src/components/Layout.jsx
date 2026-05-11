@@ -50,22 +50,22 @@ export default function Layout({ children }) {
       <ThreeBackground />
       
       {/* Picto Style Navigation */}
-      <nav className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-20 py-6 transition-colors duration-300 ${isMenuOpen ? 'bg-white' : 'bg-white/70 backdrop-blur-lg border-b border-white/20'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-20 py-6 transition-colors duration-300 ${isMenuOpen ? 'bg-brand-bg' : 'bg-brand-bg/60 backdrop-blur-xl border-b border-white/5'}`}>
         <Link to="/" className="flex items-center gap-3 group relative z-50">
-          <div className="w-9 h-9 bg-brand-primary flex items-center justify-center rounded-lg shadow-lg shadow-indigo-100">
+          <div className="w-9 h-9 bg-brand-primary flex items-center justify-center rounded-lg shadow-[0_0_20px_rgba(99,102,241,0.3)]">
             <span className="text-white font-black text-sm">MS</span>
           </div>
-          <span className="text-lg font-black tracking-tight text-slate-900 uppercase">Salman</span>
+          <span className="text-lg font-black tracking-tight text-white uppercase">Salman</span>
         </Link>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-10">
-          <div className="flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">
+          <div className="flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">
             {menuItems.map((item) => (
               <Link 
                 key={item.label} 
                 to={item.path} 
-                className={location.pathname === item.path ? "text-brand-primary" : "hover:text-brand-primary transition-all"}
+                className={location.pathname === item.path ? "text-brand-primary" : "hover:text-white transition-all"}
               >
                 {item.label}
               </Link>
@@ -73,7 +73,7 @@ export default function Layout({ children }) {
           </div>
           <Link 
             to="/contact" 
-            className="px-8 py-3 bg-brand-primary text-white text-[10px] font-bold uppercase tracking-widest hover:bg-brand-primary-dark hover:-translate-y-0.5 transition-all rounded-md shadow-lg shadow-indigo-100"
+            className="px-8 py-3 bg-brand-primary text-white text-[10px] font-bold uppercase tracking-widest hover:bg-brand-primary-dark hover:-translate-y-0.5 transition-all rounded-md shadow-[0_10px_20px_rgba(99,102,241,0.2)]"
           >
             Get Consultation
           </Link>
@@ -81,7 +81,7 @@ export default function Layout({ children }) {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden p-2 text-slate-900 hover:text-brand-primary transition-colors relative z-50"
+          className="md:hidden p-2 text-white hover:text-brand-primary transition-colors relative z-50"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -95,9 +95,9 @@ export default function Layout({ children }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-white z-40 md:hidden flex flex-col p-8 pt-32"
+              className="fixed inset-0 bg-brand-bg z-40 md:hidden flex flex-col p-8 pt-32"
             >
-              <div className="flex flex-col gap-6 text-2xl font-black text-slate-900 italic uppercase">
+              <div className="flex flex-col gap-6 text-2xl font-black text-white italic uppercase">
                 {menuItems.map((item, i) => (
                   <motion.div
                     key={item.label}
@@ -136,28 +136,30 @@ export default function Layout({ children }) {
       {/* Main Content */}
       <motion.main
         key={location.pathname}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="pt-24"
+        initial={{ opacity: 0, scale: 0.9, rotateX: 10 }}
+        animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+        exit={{ opacity: 0, scale: 0.9, rotateX: -10 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="pt-24 relative z-10"
+        style={{ perspective: "1200px" }}
       >
         {children}
       </motion.main>
 
       {/* Global Footer */}
-      <footer className="px-6 md:px-20 py-16 bg-white/30 backdrop-blur-sm border-t border-slate-200 mt-20">
+      <footer className="px-6 md:px-20 py-16 bg-brand-card/50 backdrop-blur-sm border-t border-white/5 mt-20">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{localTime} LOCAL TIME</span>
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">{localTime} LOCAL TIME</span>
             </div>
-            <p className="text-slate-400 text-xs tracking-tight">© 2025 MOHAMMED SALMAN M. ALL RIGHTS RESERVED.</p>
+            <p className="text-slate-500 text-xs tracking-tight">© 2025 MOHAMMED SALMAN M. ALL RIGHTS RESERVED.</p>
           </div>
           
-          <div className="flex gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
-             <a href="https://github.com/Salman-Gits" target="_blank" rel="noopener noreferrer" className="hover:text-brand-primary transition-all">GitHub</a>
-             <a href="https://www.linkedin.com/in/mohammed-salman-m-17b573262/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-primary transition-all">LinkedIn</a>
+          <div className="flex gap-8 text-xs font-bold uppercase tracking-widest text-slate-500">
+             <a href="https://github.com/Salman-Gits" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-all">GitHub</a>
+             <a href="https://www.linkedin.com/in/mohammed-salman-m-17b573262/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-all">LinkedIn</a>
           </div>
         </div>
       </footer>

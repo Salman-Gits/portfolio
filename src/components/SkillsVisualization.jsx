@@ -17,33 +17,33 @@ const softSkills = [
 ];
 
 const CUSTOM_TOOLTIP_STYLE = {
-  backgroundColor: '#0a0a0a',
-  border: '1px solid #222',
+  backgroundColor: '#0c0c10',
+  border: '1px solid rgba(255,255,255,0.1)',
   fontSize: '10px',
   fontFamily: 'monospace',
-  color: '#888'
+  color: '#f8fafc'
 };
 
 export default function SkillsVisualization() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#222] border border-[#222]">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5">
       {/* Chart 1: Technical */}
-      <div className="bg-[#111] p-10">
+      <div className="bg-[#0c0c10] p-10">
         <div className="flex items-center justify-between mb-8">
-          <h3 className="text-[10px] uppercase tracking-[0.3em] text-[#555] font-mono">01 / Technical</h3>
-          <div className="text-[10px] text-[#333] font-mono">Core Stack</div>
+          <h3 className="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-mono">01 / Technical</h3>
+          <div className="text-[10px] text-slate-700 font-mono">Core Stack</div>
         </div>
         <div className="h-[320px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <RadarChart cx="50%" cy="50%" outerRadius="80%" data={technicalSkills}>
               <PolarGrid stroke="#222" />
-              <PolarAngleAxis dataKey="name" tick={{ fill: '#666', fontSize: 10, fontFamily: 'monospace' }} />
+              <PolarAngleAxis dataKey="name" tick={{ fill: '#94a3b8', fontSize: 10, fontFamily: 'monospace' }} />
               <Radar
                 name="Proficiency"
                 dataKey="level"
-                stroke="#fff"
-                fill="#fff"
-                fillOpacity={0.05}
+                stroke="#6366f1"
+                fill="#6366f1"
+                fillOpacity={0.15}
               />
             </RadarChart>
           </ResponsiveContainer>
@@ -51,23 +51,23 @@ export default function SkillsVisualization() {
       </div>
 
       {/* Chart 2: Soft Skills */}
-      <div className="bg-[#111] p-10">
+      <div className="bg-[#0c0c10] p-10">
         <div className="flex items-center justify-between mb-8">
-          <h3 className="text-[10px] uppercase tracking-[0.3em] text-[#555] font-mono">02 / Soft Skills</h3>
-          <div className="text-[10px] text-[#333] font-mono">Operations</div>
+          <h3 className="text-[10px] uppercase tracking-[0.3em] text-slate-600 font-mono">02 / Soft Skills</h3>
+          <div className="text-[10px] text-slate-800 font-mono">Operations</div>
         </div>
         <div className="h-[320px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={softSkills} layout="vertical" margin={{ left: 20 }}>
               <XAxis type="number" hide />
-              <YAxis dataKey="name" type="category" tick={{ fill: '#666', fontSize: 10, fontFamily: 'monospace' }} width={100} />
+              <YAxis dataKey="name" type="category" tick={{ fill: '#94a3b8', fontSize: 10, fontFamily: 'monospace' }} width={100} />
               <Tooltip 
-                cursor={{ fill: 'rgba(255,255,255,0.02)' }}
+                cursor={{ fill: 'rgba(99, 102, 241, 0.05)' }}
                 contentStyle={CUSTOM_TOOLTIP_STYLE}
               />
-              <Bar dataKey="value" fill="#fff" barSize={12}>
+              <Bar dataKey="value" fill="#6366f1" barSize={12} radius={[0, 4, 4, 0]}>
                 {softSkills.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={index % 2 === 0 ? '#fff' : '#444'} />
+                  <Cell key={`cell-${index}`} fill={index % 2 === 0 ? '#6366f1' : '#4338ca'} />
                 ))}
               </Bar>
             </BarChart>

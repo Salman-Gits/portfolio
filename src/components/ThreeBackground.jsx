@@ -67,15 +67,15 @@ function GridBackground() {
 
 export default function ThreeBackground() {
   return (
-    <div className="fixed inset-0 -z-10 bg-[#f8fafc]">
+    <div className="fixed inset-0 -z-10 bg-[#050508]">
       {/* Cinematic Gradient Overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(139,92,246,0.08)_0%,rgba(248,250,252,1)_70%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_90%_90%,rgba(59,130,246,0.05)_0%,rgba(248,250,252,1)_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(99,102,241,0.12)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_90%_90%,rgba(168,85,247,0.06)_0%,transparent_70%)] pointer-events-none" />
       
       <Canvas camera={{ position: [0, 0, 7], fov: 60 }} dpr={[1, 2]}>
-        <ambientLight intensity={1.5} />
-        <spotLight position={[10, 15, 10]} angle={0.25} penumbra={1} intensity={1} color="#8b5cf6" />
-        <spotLight position={[-10, 15, 10]} angle={0.25} penumbra={1} intensity={0.5} color="#3b82f6" />
+        <ambientLight intensity={0.5} />
+        <spotLight position={[10, 15, 10]} angle={0.25} penumbra={1} intensity={2} color="#6366f1" />
+        <spotLight position={[-10, 15, 10]} angle={0.25} penumbra={1} intensity={1} color="#a855f7" />
         
         <AnimatedSphere />
         <FloatingRings />

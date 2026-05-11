@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageSquare, ShieldCheck, Zap } from 'lucide-react';
 import { useState } from 'react';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
 };
 
 export default function ContactPage() {
@@ -44,7 +45,6 @@ export default function ContactPage() {
           service: 'Full Stack Development',
           message: ''
         });
-        // Reset state after 5 seconds to allow new submissions
         setTimeout(() => setFormState('idle'), 5000);
       } else {
         setFormState('idle');
@@ -55,118 +55,148 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-6 md:px-20 py-20">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-        <motion.div {...fadeInUp}>
-          <h1 className="text-6xl md:text-8xl font-black text-slate-900 leading-[1.05] mb-8 font-serif">
-            Let's <span className="italic font-normal">Talk</span> <br />
-            Business.
-          </h1>
-          <p className="text-slate-500 text-lg leading-relaxed max-w-lg mb-12 font-medium">
-            Whether you're looking to build a scalable web application or need consultation on your existing system architecture, I'm here to help.
-          </p>
+    <div className="relative min-h-screen bg-brand-bg selection:bg-brand-primary selection:text-white pb-32">
+       {/* Background Decor */}
+       <div className="absolute inset-0 pointer-events-none opacity-20">
+        <div className="absolute top-0 left-0 w-full h-full grid-bg" />
+      </div>
 
-          <div className="space-y-8">
-            <div className="flex items-start gap-6">
-              <div className="w-12 h-12 bg-indigo-50 text-brand-primary flex items-center justify-center rounded-xl shrink-0">
-                <Mail size={20} />
-              </div>
-              <div>
-                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Email Me</h4>
-                <p className="text-xl font-bold text-slate-900">mdsalmand008@gmail.com</p>
-              </div>
+      <div className="max-w-7xl mx-auto px-6 md:px-20 pt-32 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
+          
+          {/* Left Side: Editorial Content */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            className="lg:col-span-12 xl:col-span-5"
+          >
+            <div className="flex items-center gap-4 mb-10">
+              <span className="w-12 h-[1px] bg-brand-primary" />
+              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-brand-primary">Initiate Project</span>
             </div>
             
-            <div className="flex items-start gap-6">
-              <div className="w-12 h-12 bg-indigo-50 text-brand-primary flex items-center justify-center rounded-xl shrink-0">
-                <MapPin size={20} />
-              </div>
-              <div>
-                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Location</h4>
-                <p className="text-xl font-bold text-slate-900">Chennai, India</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div 
-          {...fadeInUp} 
-          transition={{ delay: 0.2 }}
-          className="bg-slate-50 p-10 md:p-16 rounded-[4rem] border border-slate-100 relative overflow-hidden"
-        >
-          <div className="mb-10 flex items-center gap-4">
-             <MessageSquare className="text-brand-primary" />
-             <h3 className="text-xl font-black italic text-slate-800">Inquiry Form</h3>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Full Name</label>
-                <input 
-                  type="text" 
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  placeholder="John Doe"
-                  className="w-full bg-white border border-slate-200 rounded-xl px-6 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/20 hover:border-brand-primary/30 transition-all font-medium" 
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Email Address</label>
-                <input 
-                  type="email" 
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="john@example.com"
-                  className="w-full bg-white border border-slate-200 rounded-xl px-6 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/20 hover:border-brand-primary/30 transition-all font-medium" 
-                />
-              </div>
-            </div>
+            <h1 className="text-7xl md:text-9xl font-black text-white leading-[0.85] tracking-tighter mb-12 uppercase italic font-serif">
+               LET'S <br />
+               <span className="text-brand-primary italic font-serif font-normal">Connect.</span>
+            </h1>
             
-            <div className="space-y-2">
-              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Select Service</label>
-              <select 
-                name="service"
-                value={formData.service}
-                onChange={handleChange}
-                className="w-full bg-white border border-slate-200 rounded-xl px-6 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/20 hover:border-brand-primary/30 transition-all font-medium appearance-none"
-              >
-                <option>Full Stack Development</option>
-                <option>System Architecture</option>
-                <option>UI/UX Engineering</option>
-              </select>
-            </div>
+            <p className="text-slate-400 text-xl font-medium leading-relaxed mb-16 italic">
+              Whether you're scaling an enterprise architecture or building a production-grade web ecosystem, I'm available for new directives.
+            </p>
 
-            <div className="space-y-2">
-              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Your Message</label>
-              <textarea 
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={4}
-                required
-                placeholder="Tell me about your project..."
-                className="w-full bg-white border border-slate-200 rounded-xl px-6 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/20 hover:border-brand-primary/30 transition-all font-medium resize-none"
-              ></textarea>
+            <div className="space-y-12">
+              <div className="flex items-start gap-8 group">
+                <div className="w-14 h-14 bg-white/[0.02] border border-white/5 text-brand-primary flex items-center justify-center rounded-2xl group-hover:bg-brand-primary group-hover:text-white transition-all duration-500">
+                  <Mail size={24} />
+                </div>
+                <div>
+                  <h4 className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2">Secure Link</h4>
+                  <p className="text-2xl font-black text-white italic tracking-tight">mdsalmand008@gmail.com</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-8 group">
+                <div className="w-14 h-14 bg-white/[0.02] border border-white/5 text-brand-primary flex items-center justify-center rounded-2xl group-hover:bg-brand-primary group-hover:text-white transition-all duration-500">
+                  <MapPin size={24} />
+                </div>
+                <div>
+                  <h4 className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2">Base Coordinates</h4>
+                  <p className="text-2xl font-black text-white italic tracking-tight">Chennai, India // GMT+5:30</p>
+                </div>
+              </div>
             </div>
+          </motion.div>
 
-            <button 
-              type="submit"
-              disabled={formState !== 'idle'}
-              className={`w-full py-5 text-white text-[11px] font-black uppercase tracking-widest rounded-xl shadow-lg transition-all flex items-center justify-center gap-3 ${
-                formState === 'sent' ? 'bg-emerald-500 shadow-emerald-100' : 'bg-brand-primary shadow-indigo-100 hover:bg-brand-primary-dark'
-              }`}
-            >
-              {formState === 'idle' && <>Send Message <Send size={16} /></>}
-              {formState === 'sending' && <>Sending Message...</>}
-              {formState === 'sent' && <>Message Sent Successfully!</>}
-            </button>
-          </form>
-        </motion.div>
+          {/* Right Side: High-Tech Form */}
+          <motion.div 
+            {...fadeInUp} 
+            transition={{ delay: 0.2 }}
+            className="lg:col-span-12 xl:col-span-7"
+          >
+            <div className="bg-[#0c0c10] p-10 md:p-20 rounded-[4rem] border border-white/5 relative overflow-hidden shadow-2xl">
+              <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
+                 <MessageSquare size={200} strokeWidth={0.5} />
+              </div>
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-4 mb-16">
+                   <div className="w-3 h-3 bg-brand-primary rounded-full animate-pulse" />
+                   <h3 className="text-sm font-black uppercase tracking-[0.3em] text-white">System Inquiry Protocol</h3>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="space-y-3">
+                      <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-4">Subject Name</label>
+                      <input 
+                        type="text" 
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        placeholder="ALICE VOID"
+                        className="w-full bg-white/[0.02] border border-white/5 rounded-3xl px-8 py-6 text-sm text-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary/30 transition-all font-mono" 
+                      />
+                    </div>
+                    <div className="space-y-3">
+                      <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-4">Secure Email</label>
+                      <input 
+                        type="email" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        placeholder="ALICE@SECURE.NET"
+                        className="w-full bg-white/[0.02] border border-white/5 rounded-3xl px-8 py-6 text-sm text-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary/30 transition-all font-mono" 
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-4">Directive Type</label>
+                    <select 
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      className="w-full bg-white/[0.02] border border-white/5 rounded-3xl px-8 py-6 text-sm text-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary/30 transition-all font-mono appearance-none"
+                    >
+                      <option className="bg-[#0c0c10]">Full Stack Development</option>
+                      <option className="bg-[#0c0c10]">System Architecture</option>
+                      <option className="bg-[#0c0c10]">Enterprise Security</option>
+                      <option className="bg-[#0c0c10]">Technical Consultation</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-4">Message Log</label>
+                    <textarea 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows={5}
+                      required
+                      placeholder="INITIATING DETAILED BRIEF..."
+                      className="w-full bg-white/[0.02] border border-white/5 rounded-3xl px-8 py-6 text-sm text-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary/30 transition-all font-mono resize-none"
+                    ></textarea>
+                  </div>
+
+                  <button 
+                    type="submit"
+                    disabled={formState !== 'idle'}
+                    className={`w-full py-8 text-white text-[11px] font-black uppercase tracking-[0.4em] rounded-[2rem] shadow-2xl transition-all flex items-center justify-center gap-4 ${
+                      formState === 'sent' ? 'bg-emerald-500 shadow-emerald-500/20' : 'bg-brand-primary shadow-brand-primary/20 hover:scale-[1.02] active:scale-95'
+                    }`}
+                  >
+                    {formState === 'idle' && <>Transmit Protocol <Send size={18} /></>}
+                    {formState === 'sending' && <>Transmitting...</>}
+                    {formState === 'sent' && <>Directive Received Successfully!</>}
+                  </button>
+                </form>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
