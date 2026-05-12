@@ -1,13 +1,29 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import ThreeBackground from './ThreeBackground';
 import { useEffect, useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
 export default function Layout({ children }) {
   const [localTime, setLocalTime] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const location = useLocation();
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const menuItems = [
     { label: 'Home', path: '/' },
@@ -49,6 +65,12 @@ export default function Layout({ children }) {
     <div className="min-h-screen relative overflow-x-hidden selection:bg-purple-100 selection:text-purple-900">
       <ThreeBackground />
       
+      {/* Scroll Progress Bar */}
+      <motion.div 
+        className="fixed top-0 left-0 right-0 h-1 bg-brand-primary z-[60] origin-left"
+        style={{ scaleX }}
+      />
+
       {/* Picto Style Navigation */}
       <nav className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-20 py-6 transition-colors duration-300 ${isMenuOpen ? 'bg-brand-bg' : 'bg-brand-bg/60 backdrop-blur-xl border-b border-white/5'}`}>
         <Link to="/" className="flex items-center gap-3 group relative z-50">
@@ -145,6 +167,23 @@ export default function Layout({ children }) {
       >
         {children}
       </motion.main>
+
+      {/* Back to Top Button */}
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="fixed bottom-10 right-10 w-12 h-12 bg-brand-primary text-white rounded-full z-50 flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all"
+          >
+            <motion.div animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
+              <ArrowRight size={20} className="-rotate-90" />
+            </motion.div>
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       {/* Global Footer */}
       <footer className="px-6 md:px-20 py-16 bg-brand-card/50 backdrop-blur-sm border-t border-white/5 mt-20">

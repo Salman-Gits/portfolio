@@ -80,9 +80,9 @@ export default function ProjectsPage() {
                <span className="w-12 h-[1px] bg-brand-primary" />
                <h2 className="text-[10px] font-black text-brand-primary uppercase tracking-[0.6em]">Deployed Directives</h2>
             </div>
-            <h1 className="text-7xl md:text-[140px] font-black text-white leading-[0.8] tracking-tighter mb-12 uppercase italic font-serif">
+            <h1 className="text-5xl sm:text-7xl md:text-[140px] font-black text-white leading-[0.8] tracking-tighter mb-12 uppercase italic font-serif">
               Live <br />
-              Systems<span className="text-brand-primary font-sans font-black">.</span>
+              Systems<span className="text-brand-primary font-sans font-black underline underline-offset-[16px] decoration-1 decoration-white/10">.</span>
             </h1>
             <p className="text-slate-400 text-xl max-w-2xl font-medium italic leading-relaxed">
                A portfolio of system architectures designed for scale, security, and high-availability across healthcare and enterprise domains.

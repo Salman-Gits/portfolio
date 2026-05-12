@@ -86,23 +86,41 @@ export default function ContactPage() {
             </p>
 
             <div className="space-y-12">
-              <div className="flex items-start gap-8 group">
+              <a 
+                href="mailto:mdsalmand008@gmail.com" 
+                className="flex items-start gap-8 group"
+              >
                 <div className="w-14 h-14 bg-white/[0.02] border border-white/5 text-brand-primary flex items-center justify-center rounded-2xl group-hover:bg-brand-primary group-hover:text-white transition-all duration-500">
                   <Mail size={24} />
                 </div>
                 <div>
                   <h4 className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2">Secure Link</h4>
-                  <p className="text-2xl font-black text-white italic tracking-tight">mdsalmand008@gmail.com</p>
+                  <p className="text-xl md:text-2xl font-black text-white italic tracking-tight break-all md:break-normal">mdsalmand008@gmail.com</p>
                 </div>
-              </div>
+              </a>
               
+              <a 
+                href="https://wa.me/917358653020" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-start gap-8 group"
+              >
+                <div className="w-14 h-14 bg-white/[0.02] border border-white/5 text-emerald-500 flex items-center justify-center rounded-2xl group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500">
+                  <MessageSquare size={24} />
+                </div>
+                <div>
+                  <h4 className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2">WhatsApp Channel</h4>
+                  <p className="text-xl md:text-2xl font-black text-white italic tracking-tight group-hover:text-emerald-400 transition-colors">+91 73586 53020</p>
+                </div>
+              </a>
+
               <div className="flex items-start gap-8 group">
                 <div className="w-14 h-14 bg-white/[0.02] border border-white/5 text-brand-primary flex items-center justify-center rounded-2xl group-hover:bg-brand-primary group-hover:text-white transition-all duration-500">
                   <MapPin size={24} />
                 </div>
                 <div>
                   <h4 className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2">Base Coordinates</h4>
-                  <p className="text-2xl font-black text-white italic tracking-tight">Chennai, India // GMT+5:30</p>
+                  <p className="text-xl md:text-2xl font-black text-white italic tracking-tight group-hover:text-brand-primary/80 transition-colors">Chennai, India // GMT+5:30</p>
                 </div>
               </div>
             </div>
@@ -114,9 +132,9 @@ export default function ContactPage() {
             transition={{ delay: 0.2 }}
             className="lg:col-span-12 xl:col-span-7"
           >
-            <div className="bg-[#0c0c10] p-10 md:p-20 rounded-[4rem] border border-white/5 relative overflow-hidden shadow-2xl">
+            <div className="bg-[#0c0c10] p-10 md:p-20 rounded-[4rem] border border-white/5 relative overflow-hidden shadow-2xl holographic">
               <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
-                 <MessageSquare size={200} strokeWidth={0.5} />
+                 <MessageSquare size={200} strokeWidth={0.5} className="rotate-12" />
               </div>
               
               <div className="relative z-10">
@@ -162,9 +180,6 @@ export default function ContactPage() {
                       className="w-full bg-white/[0.02] border border-white/5 rounded-3xl px-8 py-6 text-sm text-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary/30 transition-all font-mono appearance-none"
                     >
                       <option className="bg-[#0c0c10]">Full Stack Development</option>
-                      <option className="bg-[#0c0c10]">System Architecture</option>
-                      <option className="bg-[#0c0c10]">Enterprise Security</option>
-                      <option className="bg-[#0c0c10]">Technical Consultation</option>
                     </select>
                   </div>
 

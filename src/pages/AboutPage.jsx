@@ -36,9 +36,9 @@ export default function AboutPage() {
               <span className="w-12 h-[1px] bg-brand-primary" />
               <span className="text-[10px] font-black uppercase tracking-[0.5em] text-brand-primary">The Narrative</span>
             </div>
-            <h1 className="text-7xl md:text-[120px] font-black text-white leading-[0.85] tracking-tighter mb-10">
+            <h1 className="text-5xl sm:text-7xl md:text-[120px] font-black text-white leading-[0.85] tracking-tighter mb-10">
                DRIVEN BY <br />
-               <span className="text-brand-primary italic font-serif font-normal block md:inline">Discipline.</span>
+               <span className="text-brand-primary italic font-serif font-normal block md:inline underline underline-offset-[12px] decoration-1 decoration-white/10">Discipline.</span>
             </h1>
             <div className="space-y-8 text-slate-400 text-xl font-medium leading-relaxed max-w-2xl">
                <p>

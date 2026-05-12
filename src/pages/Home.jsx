@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Download, Mail, Github, Linkedin, Award, Code, Database, Terminal, Cpu, Layers, ExternalLink, ShieldCheck, Zap, Server, Monitor } from 'lucide-react';
+import { ArrowRight, Download, Mail, Github, Linkedin, Award, Code, Database, Terminal, Cpu, Layers, ExternalLink, ShieldCheck, Zap, Server, Monitor, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SkillsVisualization from '../components/SkillsVisualization';
 
@@ -52,10 +52,10 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 whileHover={{ rotateX: 2, rotateY: 5 }}
-                className="text-7xl md:text-[140px] font-black text-white leading-[0.85] tracking-[-0.04em] mb-10 transition-transform duration-500"
+                className="text-5xl sm:text-7xl md:text-[140px] font-black text-white leading-[0.85] tracking-[-0.04em] mb-10 transition-transform duration-500"
                 style={{ perspective: 1000 }}
               >
-                THE <span className="text-brand-primary italic font-serif font-normal block md:inline">Architect</span> <br />
+                THE <span className="text-brand-primary italic font-serif font-normal block md:inline underline underline-offset-[16px] decoration-1 decoration-white/10">Architect</span> <br />
                 SALMAN<span className="text-brand-primary">.</span>
               </motion.h1>
 
@@ -208,48 +208,75 @@ export default function Home() {
               title: 'Frontend Logic', 
               icon: <Code size={32} />, 
               skills: ['Html', 'Css', 'Javascript', 'React.js'],
-              gradient: 'from-blue-500/20'
+              gradient: 'from-blue-500/20 shadow-blue-500/10'
             },
             { 
               title: 'Backend Core', 
               icon: <Server size={32} />, 
               skills: ['Java', 'Spring Boot', 'Spring Data JPA', 'Hibernate'],
-              gradient: 'from-brand-primary/20'
+              gradient: 'from-brand-primary/20 shadow-indigo-500/10'
             },
             { 
               title: 'Database', 
               icon: <Database size={32} />, 
               skills: ['MySQL'],
-              gradient: 'from-emerald-500/20'
+              gradient: 'from-emerald-500/20 shadow-emerald-500/10'
             }
           ].map((item, idx) => (
-            <div 
+            <motion.div 
               key={idx} 
-              className={`p-12 border-x border-white/5 group hover:bg-white/[0.02] transition-colors relative overflow-hidden`}
+              whileHover={{ y: -10 }}
+              className="p-8 md:p-12 border-x border-white/5 group hover:bg-white/[0.02] transition-all duration-500 relative overflow-hidden holographic shadow-2xl"
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+              <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} to-transparent opacity-0 group-hover:opacity-10 transition-opacity duration-700`} />
               <div className="relative z-10">
-                <div className="text-brand-primary mb-12 group-hover:scale-110 transition-transform duration-500">
+                <div className="text-brand-primary mb-12 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 bg-white/5 w-16 h-16 flex items-center justify-center rounded-2xl border border-white/10 group-hover:border-brand-primary/50">
                   {item.icon}
                 </div>
-                <h4 className="text-2xl font-black text-white italic mb-8 uppercase tracking-tight">{item.title}</h4>
+                <h4 className="text-2xl font-black text-white italic mb-8 uppercase tracking-tight group-hover:text-brand-primary transition-colors">{item.title}</h4>
                 <ul className="space-y-4">
                   {item.skills.map((s, i) => (
                     <li key={i} className="flex items-center gap-3">
-                      <div className="w-1.5 h-1.5 bg-brand-primary rounded-full group-hover:scale-150 transition-transform" />
-                      <span className="text-[11px] font-black text-slate-400 uppercase tracking-widest">{s}</span>
+                      <div className="w-1.5 h-1.5 bg-brand-primary rounded-full group-hover:scale-150 group-hover:bg-cyan-400 transition-all" />
+                      <span className="text-[11px] font-black text-slate-400 uppercase tracking-widest group-hover:text-white transition-colors">{s}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
 
-        <motion.div {...fadeInUp} className="mt-20">
+        <motion.div {...fadeInUp} className="mt-20 relative">
+          <div className="absolute inset-0 bg-brand-primary/5 blur-[120px] rounded-full -z-10 animate-pulse" />
           <SkillsVisualization />
         </motion.div>
       </section>
+
+      {/* Cinematic Marquee Transition */}
+      <div className="py-20 bg-brand-primary/5 overflow-hidden border-y border-white/5 relative">
+        <div className="absolute inset-0 grid-bg opacity-30 px-20 flex items-center">
+           <motion.div 
+             animate={{ x: [0, -1000] }}
+             transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+             className="flex whitespace-nowrap gap-20 text-8xl md:text-[180px] font-black uppercase select-none italic"
+           >
+              <span className="text-white/5">Java Ecosystem</span>
+              <span className="text-brand-primary/10">React Architecture</span>
+              <span className="text-purple-500/10">Scalable Logic</span>
+              <span className="text-emerald-500/10">Systems Design</span>
+              <span className="text-amber-500/10">Gold Medalist</span>
+              <span className="text-white/5">Java Ecosystem</span>
+              <span className="text-brand-primary/10">React Architecture</span>
+              <span className="text-purple-500/10">Scalable Logic</span>
+              <span className="text-emerald-500/10">Systems Design</span>
+              <span className="text-amber-500/10">Gold Medalist</span>
+           </motion.div>
+        </div>
+        <div className="relative z-10 flex justify-center">
+           <div className="px-8 py-2 glass rounded-full text-[10px] font-black text-brand-primary uppercase tracking-[0.5em] italic animate-pulse">Scanning Next Directive</div>
+        </div>
+      </div>
 
       {/* Case Studies: Immersive Hardware View */}
       <section className="py-40 bg-brand-bg relative overflow-hidden">
@@ -386,13 +413,17 @@ export default function Home() {
                  BUILD THE <br /><span className="text-brand-primary italic font-serif font-normal">Future</span><span className="text-white">.</span>
                </h3>
                
-               <div className="flex flex-wrap gap-8 justify-center md:justify-start">
-                  <a href="mailto:mdsalmand008@gmail.com" className="group flex items-center gap-4 text-xl md:text-2xl font-black hover:text-brand-primary transition-colors italic uppercase">
-                     <Mail size={24} className="text-brand-primary" />
-                     Email
+                <div className="flex flex-wrap gap-8 justify-center md:justify-start">
+                  <a href="mailto:mdsalmand008@gmail.com" className="group flex items-center gap-4 text-xl md:text-2xl font-black hover:text-brand-primary transition-all italic uppercase hover:scale-105">
+                     <Mail size={24} className="text-brand-primary transition-transform group-hover:rotate-12" />
+                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/50 group-hover:from-brand-primary group-hover:to-blue-400">Email</span>
                   </a>
-                  <a href="https://github.com/Salman-Gits" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-[11px] font-black uppercase tracking-widest hover:text-brand-primary transition-colors italic">
-                     GitHub
+                  <a href="https://wa.me/917358653020" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 text-xl md:text-2xl font-black hover:text-emerald-500 transition-all italic uppercase hover:scale-105">
+                     <MessageSquare size={24} className="text-emerald-500 transition-transform group-hover:rotate-12" />
+                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/50 group-hover:from-emerald-500 group-hover:to-teal-400">WhatsApp</span>
+                  </a>
+                  <a href="https://github.com/Salman-Gits" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-[11px] font-black uppercase tracking-widest hover:text-brand-primary transition-colors italic group">
+                     <span className="group-hover:translate-y-[-2px] transition-transform">GitHub</span>
                   </a>
                   <a href="https://www.linkedin.com/in/mohammed-salman-m-17b573262/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-[11px] font-black uppercase tracking-widest hover:text-brand-primary transition-colors italic">
                      LinkedIn
