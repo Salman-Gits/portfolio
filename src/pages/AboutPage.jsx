@@ -63,7 +63,7 @@ export default function AboutPage() {
              >
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-bg/90 via-transparent to-transparent z-10 opacity-60" />
                 <img 
-                  src="/src/pages/IMG_20251115_194351.png" 
+                  src="src/pages/Salman_profile.png" 
                   alt="Mohammed Salman" 
                   className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-110 transition-all duration-1000"
                 />
