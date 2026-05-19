@@ -1,0 +1,38 @@
+MOHAMMED SALMAN M
+Chennai, India | mdsalmand008@gmail.com | +91-7358653020
+LinkedIn: linkedin.com/in/mohammed-salman-m-17b573262 | GitHub: github.com/Salman-Gits | Portfolio: portfolio-lovat-pi-51.vercel.app
+
+PROFESSIONAL SUMMARY
+Full Stack Developer with internship experience designing and delivering production-grade web applications using React.js, Java, Spring Boot, REST API, and MySQL. Skilled in object-oriented programming (OOP), MVC architecture, and Agile/Scrum development. Strong foundation in version control (Git/GitHub), API testing (Postman), and database design. Gold Medalist across 3 consecutive academic years with a track record of building, integrating, and deploying end-to-end web solutions.
+
+TECHNICAL SKILLS
+Languages: Java, JavaScript (ES6+), HTML5, CSS3, SQL
+Frameworks & Libraries: React.js (Hooks, Component Architecture), Spring Boot, Spring Data JPA, Hibernate
+Databases: MySQL (Schema Design, Indexing, Query Optimization), REST API Integration
+Tools & Practices: Git, GitHub, Postman, VS Code, Jira, Agile/Scrum, MVC Architecture, OOP, WordPress
+
+EXPERIENCE
+Full Stack Developer Intern — Kalsun Groups (December 2025 – March 2026)
+• Developed 4+ responsive frontend modules using React.js, reducing UI development effort by ~30%.
+• Designed and implemented 10+ RESTful APIs using Spring Boot and Spring Data JPA following MVC architecture.
+• Designed normalized MySQL database schemas for 3 core application modules.
+• Customized and integrated REST APIs into WordPress sites.
+• Managed sprint tasks and deliverables using Jira in an Agile/Scrum environment.
+
+PROJECTS
+Blood Bank Management System (March – April 2026)
+Tech Stack: React.js, Spring Boot, Spring Data JPA, MySQL, REST API
+• Built a full-stack CRUD web application for donor registration and real-time inventory tracking.
+• Designed 8+ RESTful API endpoints; implemented indexed MySQL queries.
+
+E-Commerce Web Application (February – April 2025)
+Tech Stack: React.js, Java, Spring Boot, Spring Data JPA, MySQL, REST API
+• Engineered a full-stack e-commerce platform with product listing, cart management, and stock handling.
+• Implemented real-time Add-to-Cart functionality using REST API communication.
+
+EDUCATION
+B.Sc. Information Technology — The New College, Chennai (Graduated 2025)
+CGPA: 8.5 / 10 | Gold Medalist — 1st, 2nd & 3rd Year | 2nd Place, Intra-College Hackathon
+
+CERTIFICATIONS
+Udemy: HTML/CSS, React.js, Java, MySQL | Infosys Springboard: Java | Scaler Academy: React.js & MySQL | LetsUpgrade: Java & React.js Bootcamps
