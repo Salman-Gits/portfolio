@@ -9,11 +9,11 @@ export default function Projects() {
     {
       id: '01',
       title: 'Blood Bank Hub',
-      subtitle: 'Infrastructure // Healthcare',
-      version: 'v1.2.0_STABLE',
-      description: 'An automated ecosystem for donor registration and real-time blood stock tracking. Built with secure Spring Boot MVC endpoints and Hibernate ORM.',
+      subtitle: 'Healthcare Platform',
+      version: 'v1.2.0',
+      description: 'A full-stack CRUD application for donor registration and real-time blood inventory tracking. Built with Spring Boot REST endpoints, Hibernate ORM, and an indexed MySQL backend.',
       tags: ['Java', 'Spring Boot', 'React.js', 'MySQL'],
-      metrics: '8+ Core API Endpoints',
+      metrics: '8+ API Endpoints',
       category: 'infrastructure',
       liveUrl: 'https://blood-bank-rouge-alpha.vercel.app/',
       repoUrl: 'https://github.com/Salman-Gits'
@@ -21,11 +21,11 @@ export default function Projects() {
     {
       id: '02',
       title: 'Nexus E-Commerce',
-      subtitle: 'Transactional // High Availability',
-      version: 'v2.0.1_BETA',
-      description: 'An enterprise platform built for atomic stock updates, full relational integrity, and a seamless zero-reload cart pipeline.',
+      subtitle: 'Shopping Platform',
+      version: 'v2.0.1',
+      description: 'An e-commerce platform with real-time cart synchronization, full relational integrity, and a seamless zero-reload checkout pipeline.',
       tags: ['React.js', 'TypeScript', 'Tailwind', 'REST APIs'],
-      metrics: 'State Synchronization',
+      metrics: 'Real-time Sync',
       category: 'transactional',
       liveUrl: 'https://ecommerce-frontend-seven-sooty.vercel.app/',
       repoUrl: 'https://github.com/Salman-Gits'
@@ -33,11 +33,11 @@ export default function Projects() {
     {
       id: '03',
       title: 'Rental Lease Engine',
-      subtitle: 'Logistics Systems // Automation',
-      version: 'v1.0.4_STABLE',
-      description: 'Asset-tracking engine with barcode scanning to measure rental periods and calculate temporal lease metrics with precision.',
+      subtitle: 'Logistics & Automation',
+      version: 'v1.0.4',
+      description: 'An asset-tracking application with barcode scanning to measure rental periods and calculate lease metrics with precision.',
       tags: ['React.js', 'JSON', 'Barcode APIs'],
-      metrics: 'Dynamic Temporal Models',
+      metrics: 'Dynamic Tracking',
       category: 'logistics',
       liveUrl: 'https://rental-opal-one.vercel.app/',
       repoUrl: 'https://github.com/Salman-Gits'
@@ -45,11 +45,11 @@ export default function Projects() {
     {
       id: '04',
       title: 'Creative Showcase',
-      subtitle: 'Presentation // Motion Design',
-      version: 'v1.1.0_LIVE',
-      description: 'High-fidelity showcase designed for a creative professional. Focuses on cinematic page choreography and asset lazy loading.',
-      tags: ['React.js', 'Motion Hooks', 'Vite'],
-      metrics: 'Fluid Transitions',
+      subtitle: 'Portfolio & Motion Design',
+      version: 'v1.1.0',
+      description: 'A high-fidelity portfolio site for a creative professional, featuring cinematic page transitions and optimized asset loading.',
+      tags: ['React.js', 'Motion', 'Vite'],
+      metrics: 'Smooth Transitions',
       category: 'design',
       liveUrl: 'https://shaheinsha-portfolio.vercel.app/',
       repoUrl: 'https://github.com/Salman-Gits'
@@ -57,29 +57,29 @@ export default function Projects() {
     {
       id: '05',
       title: 'KG Badminton',
-      subtitle: 'Client Project // Sports Management',
-      version: 'v1.0.0_LIVE',
-      description: 'A professional digital platform developed for a badminton club, focusing on court availability, membership details, and event showcases with a high-performance interface.',
-      tags: ['React.js', 'Tailwind CSS', 'Responsive Design'],
-      metrics: 'Client Launch • Production Ready',
+      subtitle: 'Client Project',
+      version: 'v1.0.0',
+      description: 'A professional website for a badminton club, featuring court availability, membership details, and event showcases with a responsive, high-performance interface.',
+      tags: ['React.js', 'Tailwind CSS', 'Responsive'],
+      metrics: 'Production Ready',
       category: 'design',
       liveUrl: 'https://kgbadminton.vercel.app/',
       repoUrl: 'https://github.com/Salman-Gits'
     }
   ]
 
-  const filteredProjects = filter === 'all' 
-    ? projects 
+  const filteredProjects = filter === 'all'
+    ? projects
     : projects.filter(p => p.category === filter)
 
   return (
     <div className="page-fade-in projects-page container">
       <header className="page-header">
-        <span className="page-subtitle">SYSTEM ARCHITECTURES & LIVE SYSTEMS</span>
+        <span className="page-subtitle">Live Projects & Systems</span>
         <h1 className="page-title text-gradient">Projects</h1>
       </header>
 
-      <div className="flex flex-wrap justify-center gap-4 mb-16 border-b border-white/5 pb-8">
+      <div className="flex flex-wrap justify-center gap-3 mb-12 border-b pb-6">
         {[
           { label: 'All', value: 'all' },
           { label: 'Infrastructure', value: 'infrastructure' },
@@ -90,66 +90,71 @@ export default function Projects() {
           <button
             key={tab.value}
             onClick={() => setFilter(tab.value)}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-              filter === tab.value 
-                ? 'bg-accent/10 border border-accent/20 text-accent' 
-                : 'text-muted hover:text-white border border-transparent'
+            className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+              filter === tab.value
+                ? 'text-accent'
+                : 'text-muted hover:text-white'
             }`}
+            style={{
+              background: filter === tab.value ? 'var(--color-accent-soft)' : 'transparent',
+              border: filter === tab.value ? '1px solid var(--color-border-glow)' : '1px solid var(--color-border)'
+            }}
           >
             {tab.label}
           </button>
         ))}
       </div>
 
-      <motion.div 
+      <motion.div
         layout
-        className="projects-catalog-grid grid grid-cols-1 md:grid-cols-2 gap-8 mb-24"
+        className="projects-catalog-grid grid grid-cols-1 md:grid-cols-2 gap-6 mb-24"
       >
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project) => (
-            <motion.div 
-              key={project.id} 
+            <motion.div
+              key={project.id}
               layout
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.4 }}
-              className="project-detail-card glass-card flex flex-col justify-between"
+              className="project-detail-card glass-card"
             >
               <div>
-                <div className="flex justify-between items-center mb-6 pb-4 border-b border-white/5">
-                  <div className="flex items-center gap-2 text-[10px] font-mono text-muted uppercase">
-                    <Layers size={14} className="text-accent" /> SYS_REG_{project.id}
+                <div className="flex justify-between items-center mb-5 pb-4 border-t" style={{ borderBottom: '1px solid var(--color-border)' }}>
+                  <div className="flex items-center gap-2 text-[10px] font-mono text-muted uppercase tracking-widest">
+                    <Layers size={14} className="text-accent" /> {project.id}
                   </div>
-                  <div className="flex items-center gap-2 bg-accent/5 border border-accent/10 text-accent text-[9px] px-2 py-0.5 rounded font-bold">
+                  <div className="flex items-center gap-2 text-[9px] px-2 py-0.5 rounded font-semibold text-accent" style={{ background: 'var(--color-accent-soft)', border: '1px solid var(--color-border-glow)' }}>
                     <Shield size={12} /> {project.version}
                   </div>
                 </div>
 
-                <div className="mb-6">
-                  <h3 className="text-2xl font-black">{project.title}</h3>
+                <div className="mb-5">
+                  <h3 className="text-xl font-bold">{project.title}</h3>
                   <span className="text-xs font-mono text-accent block mt-1 uppercase tracking-wider">{project.subtitle}</span>
                 </div>
 
-                <p className="text-muted text-sm leading-relaxed mb-8">
+                <p className="text-muted text-sm leading-relaxed mb-6">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-8">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="bg-white/5 border border-white/5 text-[9px] font-mono text-muted px-2 py-1 rounded">{tag}</span>
+                    <span key={tag} className="tag-chip">{tag}</span>
                   ))}
                 </div>
               </div>
 
               <div className="mt-auto">
-                <div className="flex items-center gap-2 text-[10px] font-mono text-muted mb-8 italic">
-                  <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse shadow-[0_0_8px_var(--color-accent)]"></span> {project.metrics}
+                <div className="flex items-center gap-2 text-[10px] font-mono text-muted mb-5">
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" style={{ boxShadow: '0 0 8px var(--color-accent)' }}></span>
+                  {project.metrics}
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex gap-3">
                   <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm flex-1">
-                    Launch <ExternalLink size={14} />
+                    Live Demo <ExternalLink size={14} />
                   </a>
                   <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm">
                     <GitBranch size={16} />

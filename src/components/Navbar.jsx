@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import { Menu, X, Layers, Paintbrush, Download } from 'lucide-react'
+import { Menu, X, Layers, Palette, Download } from 'lucide-react'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -14,11 +14,11 @@ export default function Navbar() {
       setScrolled(window.scrollY > 20)
     }
     window.addEventListener('scroll', handleScroll)
-    
+
     const savedTheme = localStorage.getItem('portfolio-theme') || 'theme-obsidian'
     setActiveTheme(savedTheme)
     document.body.className = savedTheme
-    
+
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -41,25 +41,24 @@ export default function Navbar() {
   ]
 
   const themes = [
-    { name: 'theme-obsidian', color: '#f59e0b', label: 'Gold' },
+    { name: 'theme-obsidian', color: '#f59e0b', label: 'Amber' },
     { name: 'theme-emerald', color: '#10b981', label: 'Emerald' },
-    { name: 'theme-cosmic', color: '#8b5cf6', label: 'Cosmic' },
-    { name: 'theme-amber', color: '#f97316', label: 'Sunset' },
-    { name: 'theme-midnight', color: '#e2e8f0', label: 'Black', border: true },
-    { name: 'theme-snow', color: '#0f172a', label: 'White', lightBg: true }
+    { name: 'theme-cosmic', color: '#8b5cf6', label: 'Violet' },
+    { name: 'theme-amber', color: '#f97316', label: 'Orange' },
+    { name: 'theme-midnight', color: '#e2e8f0', label: 'Mono' },
+    { name: 'theme-snow', color: '#0f172a', label: 'Light' }
   ]
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <NavLink to="/" className="nav-logo">
-          <Layers className="logo-icon" size={24} />
+          <Layers className="logo-icon" size={22} />
           <span className="logo-text">
-            MOHAMMED SALMAN M<span className="logo-dot">.</span>
+            Mohammed Salman M<span className="logo-dot">.</span>
           </span>
         </NavLink>
 
-        {/* Desktop Navigation */}
         <ul className="nav-links">
           {navItems.map((item) => (
             <li key={item.path}>
@@ -73,76 +72,83 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-4 nav-actions-row">
+        <div className="flex items-center gap-3 nav-actions-row">
           <div className="theme-selector-wrapper" style={{ position: 'relative' }}>
-            <button 
-              className="theme-panel-toggle-btn text-muted" 
+            <button
+              className="text-muted"
               onClick={() => setShowThemePanel(!showThemePanel)}
-              aria-label="Switch UI Theme"
-              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}
+              aria-label="Switch theme"
+              style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', padding: '0.4rem', borderRadius: '8px', transition: 'all 0.25s' }}
             >
-              <Paintbrush size={18} className="text-accent" />
-              <span className="hidden-mobile">Theme</span>
+              <Palette size={18} className="text-accent" />
             </button>
 
             {showThemePanel && (
-              <div className="theme-bubble-panel glass-card" style={{
-                position: 'absolute',
-                top: 'calc(100% + 12px)',
-                right: '0',
-                padding: '1rem',
-                display: 'flex',
-                gap: '0.75rem',
-                zIndex: 2000,
-                boxShadow: '0 15px 30px rgba(0,0,0,0.4)',
-                minWidth: '180px',
-                justifyContent: 'center'
-              }}>
-                {themes.map((t) => (
-                  <button
-                    key={t.name}
-                    onClick={() => {
-                      handleThemeChange(t.name)
-                      setShowThemePanel(false)
-                    }}
-                    title={t.label}
-                    style={{
-                      width: '24px',
-                      height: '24px',
-                      borderRadius: '50%',
-                      backgroundColor: t.color,
-                      border: activeTheme === t.name ? '2px solid #fff' : '2px solid transparent',
-                      cursor: 'pointer',
-                      transition: 'transform 0.2s'
-                    }}
-                  />
-                ))}
-              </div>
+              <>
+                <div
+                  onClick={() => setShowThemePanel(false)}
+                  style={{ position: 'fixed', inset: 0, zIndex: 1999 }}
+                />
+                <div className="glass-card" style={{
+                  position: 'absolute',
+                  top: 'calc(100% + 10px)',
+                  right: '0',
+                  padding: '1rem',
+                  display: 'flex',
+                  gap: '0.6rem',
+                  zIndex: 2000,
+                  minWidth: '200px',
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                  borderRadius: '14px'
+                }}>
+                  {themes.map((t) => (
+                    <button
+                      key={t.name}
+                      onClick={() => {
+                        handleThemeChange(t.name)
+                        setShowThemePanel(false)
+                      }}
+                      title={t.label}
+                      style={{
+                        width: '28px',
+                        height: '28px',
+                        borderRadius: '50%',
+                        backgroundColor: t.color,
+                        border: activeTheme === t.name ? '2px solid var(--color-text-main)' : '2px solid transparent',
+                        cursor: 'pointer',
+                        transition: 'transform 0.2s',
+                        boxShadow: activeTheme === t.name ? `0 0 12px ${t.color}66` : 'none'
+                      }}
+                    />
+                  ))}
+                </div>
+              </>
             )}
           </div>
 
-          <a 
-            href="/Mohammed_Salman_Resume.txt" 
+          <a
+            href="/Mohammed_Salman_Resume.txt"
             download
-            className="btn btn-outline btn-sm font-mono nav-cv-download-btn"
+            className="btn btn-outline btn-sm nav-cv-download-btn"
             style={{ fontSize: '0.75rem' }}
           >
-            <Download size={14} className="mr-1 inline" /> Resume
+            <Download size={14} /> Resume
           </a>
 
           <div className="nav-status-container">
             <div className="status-beacon"></div>
-            <span className="status-text">AVAILABLE</span>
+            <span className="status-text">Available</span>
           </div>
         </div>
 
         <button className="mobile-menu-toggle" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          {isOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
       {isOpen && (
-        <div className="mobile-nav-panel glass-card" style={{ margin: '0 1rem', position: 'fixed', top: '70px', left: 0, right: 0 }}>
+        <div className="mobile-nav-panel glass-card">
           <ul className="mobile-nav-links">
             {navItems.map((item) => (
               <li key={item.path}>
@@ -154,28 +160,31 @@ export default function Navbar() {
                 </NavLink>
               </li>
             ))}
-            <li className="pt-4 border-t border-white/5">
-              <div className="flex justify-between items-center mb-6">
-                <span className="text-muted text-sm">Theme Variant</span>
-                <div className="flex gap-3">
+            <li className="pt-4 border-t">
+              <div className="flex justify-between items-center mb-4 mt-4">
+                <span className="text-muted text-sm">Theme</span>
+                <div className="flex gap-2 flex-wrap">
                   {themes.map((t) => (
                     <button
                       key={t.name}
                       onClick={() => handleThemeChange(t.name)}
                       style={{
-                        width: '22px',
-                        height: '22px',
+                        width: '24px',
+                        height: '24px',
                         borderRadius: '50%',
                         backgroundColor: t.color,
-                        border: activeTheme === t.name ? '2px solid #fff' : '1px solid rgba(255,255,255,0.1)'
+                        border: activeTheme === t.name ? '2px solid var(--color-text-main)' : '1px solid var(--color-border)'
                       }}
                     />
                   ))}
                 </div>
               </div>
+              <a href="/Mohammed_Salman_Resume.txt" download className="btn btn-outline btn-sm w-full mb-4">
+                <Download size={14} /> Download Resume
+              </a>
               <div className="nav-status-container mobile w-full justify-center">
                 <div className="status-beacon"></div>
-                <span className="status-text">AVAILABLE FOR PROJECTS</span>
+                <span className="status-text">Available for Work</span>
               </div>
             </li>
           </ul>
