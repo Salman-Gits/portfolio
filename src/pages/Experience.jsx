@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { Briefcase, Award, CheckCircle2, Star, Calendar } from 'lucide-react'
+import { Briefcase, Calendar, CheckCircle2, Award, Star } from 'lucide-react'
 
 export default function Experience() {
   const internshipTasks = [
@@ -17,83 +17,63 @@ export default function Experience() {
   ]
 
   return (
-    <div className="page-fade-in experience-page container">
+    <div className="page-fade-in container">
       <header className="page-header">
-        <motion.span
-          className="page-subtitle"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-        >Experience & Credentials</motion.span>
-        <motion.h1
-          className="page-title text-gradient"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-        >My Journey</motion.h1>
+        <motion.span className="page-subtitle" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>Experience & Credentials</motion.span>
+        <motion.h1 className="page-title" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>My Journey</motion.h1>
       </header>
 
-      <div className="experience-timeline-grid grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+        {/* Work Experience */}
         <motion.div
-          className="timeline-column"
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-3 mb-8 pb-4 border-t">
-            <Briefcase size={22} className="text-accent" />
-            <h2 className="text-xl font-bold">Work Experience</h2>
+          <div className="flex items-center gap-2 mb-6">
+            <Briefcase size={20} className="text-accent" />
+            <h2 className="text-lg font-bold">Work Experience</h2>
           </div>
 
-          <motion.div
-            className="timeline-track"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
+          <div className="timeline-track">
+            <div className="timeline-dot"></div>
             <motion.div
-              className="timeline-dot"
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, type: 'spring' }}
-            />
-            <motion.div
-              className="timeline-node-card glass-card shimmer-card"
-              initial={{ opacity: 0, y: 30 }}
+              className="timeline-card card"
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              transition={{ delay: 0.15, duration: 0.4 }}
             >
-              <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
+              <div className="flex flex-col md:flex-row justify-between items-start gap-3 mb-4">
                 <div>
-                  <span className="text-xs font-mono font-semibold text-accent uppercase tracking-widest block mb-1">Kalsun Groups</span>
-                  <h3 className="text-xl font-bold">Full Stack Developer Intern</h3>
+                  <span className="text-xs font-mono text-accent uppercase tracking-wider block mb-1">Kalsun Groups</span>
+                  <h3 className="font-bold text-base">Full Stack Developer Intern</h3>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-[10px] font-mono whitespace-nowrap" style={{ background: 'var(--color-accent-soft)', borderColor: 'var(--color-border-glow)' }}>
-                  <Calendar size={14} className="text-accent" /> Dec 2025 — Mar 2026
+                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border text-[10px] font-mono whitespace-nowrap" style={{ background: 'var(--color-accent-soft)', borderColor: 'var(--color-border-hover)' }}>
+                  <Calendar size={12} className="text-accent" /> Dec 2025 — Mar 2026
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2 mb-6">
-                {['React.js', 'Java', 'Spring Boot', 'MySQL', 'JPA', 'Hibernate', 'Jira'].map((tech) => (
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {['React.js', 'Java', 'Spring Boot', 'MySQL', 'JPA', 'Hibernate'].map(tech => (
                   <span key={tech} className="tag-chip">{tech}</span>
                 ))}
               </div>
 
-              <p className="text-muted leading-relaxed mb-6 text-sm">
+              <p className="text-muted text-sm leading-relaxed mb-4">
                 Joined the development team to help scale client-facing applications. Contributed to building Spring-based REST endpoints and optimizing database schemas.
               </p>
 
-              <ul className="space-y-3">
+              <ul className="space-y-2.5">
                 {internshipTasks.map((task, idx) => (
                   <motion.li
                     key={idx}
-                    className="flex gap-3 items-start"
-                    initial={{ opacity: 0, x: -15 }}
+                    className="flex gap-2.5 items-start"
+                    initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.4 + idx * 0.1 }}
+                    transition={{ delay: 0.3 + idx * 0.08 }}
                   >
                     <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 shrink-0"></div>
                     <p className="text-sm text-muted leading-relaxed">{task}</p>
@@ -101,70 +81,41 @@ export default function Experience() {
                 ))}
               </ul>
             </motion.div>
-          </motion.div>
+          </div>
         </motion.div>
 
+        {/* Certifications */}
         <motion.div
-          className="timeline-info-column"
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-3 mb-8 pb-4 border-t">
-            <CheckCircle2 size={22} className="text-accent" />
-            <h2 className="text-xl font-bold">Certifications</h2>
+          <div className="flex items-center gap-2 mb-6">
+            <CheckCircle2 size={20} className="text-accent" />
+            <h2 className="text-lg font-bold">Certifications</h2>
           </div>
 
-          <div className="space-y-3 mb-12">
+          <div className="space-y-3 mb-10">
             {certifications.map((cert, idx) => (
               <motion.div
                 key={idx}
-                className="certificate-item-card glass-card shimmer-card"
-                initial={{ opacity: 0, y: 20 }}
+                className="cert-card card"
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.08, duration: 0.5 }}
-                whileHover={{ x: 4 }}
+                transition={{ delay: idx * 0.06, duration: 0.4 }}
               >
-                <div className="flex justify-between items-start gap-4">
+                <div className="flex justify-between items-start gap-3">
                   <div>
                     <h4 className="font-semibold text-sm">{cert.name}</h4>
-                    <span className="text-[10px] font-mono text-accent uppercase tracking-widest mt-1 block">{cert.provider}</span>
+                    <span className="text-[10px] font-mono text-accent uppercase tracking-wider mt-1 block">{cert.provider}</span>
                   </div>
-                  <span className="text-[9px] px-2 py-0.5 rounded font-semibold uppercase shrink-0 text-accent" style={{ background: 'var(--color-accent-soft)', border: '1px solid var(--color-border-glow)' }}>Verified</span>
+                  <span className="feature-badge shrink-0">Verified</span>
                 </div>
-                <div className="mt-3 pt-3 border-t">
-                  <span className="text-[9px] font-mono text-muted uppercase">ID: {cert.id}</span>
+                <div className="mt-2.5 pt-2.5 border-t" style={{ borderColor: 'var(--color-border)' }}>
+                  <span className="text-[9px] font-mono text-subtle uppercase">ID: {cert.id}</span>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-3 mb-8 pb-4 border-t">
-            <Award size={22} className="text-secondary" />
-            <h2 className="text-xl font-bold">Achievements</h2>
-          </div>
-
-          <div className="grid grid-cols-1 gap-3">
-            {[
-              { title: 'Triple Gold Medalist', icon: Star, detail: 'First place in the IT Department across three consecutive years (2023, 2024, 2025).' },
-              { title: 'Hackathon Runner-Up', icon: Award, detail: '2nd place out of 40+ competing teams at the Inner College Hackathon (2025).' }
-            ].map((honor, idx) => (
-              <motion.div
-                key={idx}
-                className="honor-item-card glass-card shimmer-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.5 }}
-                whileHover={{ scale: 1.02 }}
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <honor.icon size={18} className="text-secondary" />
-                  <h4 className="font-semibold text-sm">{honor.title}</h4>
-                </div>
-                <p className="text-muted text-xs leading-relaxed">{honor.detail}</p>
               </motion.div>
             ))}
           </div>
