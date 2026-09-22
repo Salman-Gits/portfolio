@@ -1,41 +1,61 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
-import { ArrowRight, Award, ShieldCheck, Database, Layers, ExternalLink } from 'lucide-react'
+import { ArrowRight, Award, ShieldCheck, Database, Layers, ExternalLink, Sparkles } from 'lucide-react'
 import profileImg from '../assets/images/salman.png'
+import { useTypewriter, useCountUp, useInView, useMousePosition } from '../hooks/useAnimations'
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+const container = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.08 } }
+}
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+}
+
+function MetricCounter({ target, suffix, label, icon: Icon, color }) {
+  const [ref, inView] = useInView()
+  const value = useCountUp(target, 1800, inView)
+  return (
+    <div ref={ref} className="hero-metric-card glass-card shimmer-card flex-1">
+      <Icon className="metric-icon" size={28} style={color ? { color } : undefined} />
+      <div className="metric-details">
+        <span className="metric-big block">
+          {target % 1 === 0 ? Math.round(value) : value.toFixed(1)}{suffix}
+        </span>
+        <span className="metric-text" style={color ? { color } : undefined}>{label}</span>
+      </div>
+    </div>
+  )
 }
 
 export default function Home() {
+  const typedRole = useTypewriter(['Full Stack Developer', 'Java Spring Boot', 'React.js Specialist', 'Backend Engineer'], 90, 40, 2000)
+  const mousePos = useMousePosition()
+
   const featuredProjects = [
     {
-      id: '01',
-      title: 'Blood Bank Hub',
-      subtitle: 'Healthcare Platform',
+      id: '01', title: 'Blood Bank Hub', subtitle: 'Healthcare Platform',
       description: 'A full-stack application for donor registration and real-time blood inventory tracking, built with Spring Boot REST APIs and an indexed MySQL backend.',
       tags: ['Java', 'Spring Boot', 'React.js', 'MySQL'],
       liveUrl: 'https://blood-bank-rouge-alpha.vercel.app/'
     },
     {
-      id: '02',
-      title: 'Nexus E-Commerce',
-      subtitle: 'Shopping Platform',
+      id: '02', title: 'Nexus E-Commerce', subtitle: 'Shopping Platform',
       description: 'An e-commerce platform with real-time cart synchronization, optimized product catalogs, and a seamless zero-reload checkout experience.',
       tags: ['React.js', 'TypeScript', 'Tailwind', 'REST APIs'],
       liveUrl: 'https://ecommerce-frontend-seven-sooty.vercel.app/'
     },
     {
-      id: '03',
-      title: 'KG Badminton',
-      subtitle: 'Client Project',
+      id: '03', title: 'KG Badminton', subtitle: 'Client Project',
       description: 'A professional website for a badminton club, featuring court availability, membership details, and event showcases with a responsive interface.',
       tags: ['React.js', 'Tailwind CSS', 'Vite', 'Responsive'],
       liveUrl: 'https://kgbadminton.vercel.app/'
     }
   ]
+
+  const parallaxX = (mousePos.x - 0.5) * 20
+  const parallaxY = (mousePos.y - 0.5) * 20
 
   return (
     <div className="page-fade-in home-page">
@@ -43,75 +63,84 @@ export default function Home() {
         <div className="hero-grid-container">
           <motion.div
             className="hero-intro-column"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            variants={container}
+            initial="hidden"
+            animate="show"
           >
-            <div className="executive-badge">
+            <motion.div variants={item} className="executive-badge">
               <span className="executive-pulse"></span> B.Sc IT Graduate & Full Stack Developer
-            </div>
+            </motion.div>
 
-            <h1 className="main-title text-gradient">
+            <motion.h1 variants={item} className="main-title text-gradient">
               Mohammed Salman M. <br />
-              <span className="title-gradient">Full Stack Developer</span>
-            </h1>
+              <span className="title-gradient">
+                {typedRole}<span style={{ opacity: 0.4 }}>|</span>
+              </span>
+            </motion.h1>
 
-            <p className="hero-lead">
+            <motion.p variants={item} className="hero-lead">
               Gold medalist developer specializing in Java Spring Boot and React. I build reliable, well-structured web applications that bridge robust backend architecture with clean, responsive user experiences.
-            </p>
+            </motion.p>
 
-            <div className="cta-group flex gap-4 mt-8">
-              <Link to="/projects" className="btn btn-primary">
-                View Projects <ArrowRight size={18} />
-              </Link>
-              <Link to="/contact" className="btn btn-outline">
-                Get in Touch
-              </Link>
-            </div>
+            <motion.div variants={item} className="cta-group flex gap-4 mt-8">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link to="/projects" className="btn btn-primary">
+                  View Projects <ArrowRight size={18} />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link to="/contact" className="btn btn-outline">
+                  Get in Touch
+                </Link>
+              </motion.div>
+            </motion.div>
 
-            <div className="quick-metrics-row mt-12 flex gap-4">
-              <div className="hero-metric-card glass-card flex-1">
-                <Award className="metric-icon" size={28} />
-                <div className="metric-details">
-                  <span className="metric-big block">3x</span>
-                  <span className="metric-text text-accent">Gold Medalist</span>
-                </div>
-              </div>
-
-              <div className="hero-metric-card glass-card flex-1">
-                <ShieldCheck className="metric-icon text-secondary" size={28} />
-                <div className="metric-details">
-                  <span className="metric-big block">8.5</span>
-                  <span className="metric-text text-secondary">Cumulative GPA</span>
-                </div>
-              </div>
-            </div>
+            <motion.div variants={item} className="quick-metrics-row mt-12 flex gap-4">
+              <MetricCounter target={3} suffix="x" label="Gold Medalist" icon={Award} />
+              <MetricCounter target={8.5} label="Cumulative GPA" icon={ShieldCheck} color="var(--color-secondary)" />
+            </motion.div>
           </motion.div>
 
           <motion.div
             className="hero-showcase-column"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="hero-profile-container">
+              <div className="profile-glow-ring"></div>
               <div className="profile-decorator"></div>
-              <img
+              <motion.img
                 src={profileImg}
                 alt="Mohammed Salman M"
                 className="hero-profile-image"
                 referrerPolicy="no-referrer"
+                animate={{ x: parallaxX * 0.3, y: parallaxY * 0.3 }}
+                transition={{ type: 'spring', stiffness: 50, damping: 15 }}
               />
 
-              <div className="absolute -bottom-4 -right-4 glass-card p-3 flex items-center gap-2" style={{ borderRadius: '12px' }}>
+              <motion.div
+                className="absolute -bottom-4 -right-4 glass-card p-3 flex items-center gap-2"
+                style={{ borderRadius: '12px' }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.8 }}
+              >
                 <div className="status-beacon"></div>
                 <span className="text-[10px] font-mono font-semibold tracking-widest text-accent uppercase">Open to Work</span>
-              </div>
+              </motion.div>
             </div>
 
-            <div className="showcase-card glass-card mt-10">
+            <motion.div
+              className="showcase-card glass-card shimmer-card mt-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
               <div className="showcase-header flex justify-between items-center mb-5">
-                <span className="showcase-label text-xs font-mono text-accent tracking-widest uppercase">Engineering Principles</span>
+                <span className="showcase-label text-xs font-mono text-accent tracking-widest uppercase flex items-center gap-2">
+                  <Sparkles size={14} /> Engineering Principles
+                </span>
                 <span className="showcase-status text-[10px] font-mono px-2 py-0.5 rounded text-accent" style={{ background: 'var(--color-accent-soft)' }}>Active</span>
               </div>
               <h3 className="showcase-title text-xl font-bold mb-3">How I Build</h3>
@@ -120,29 +149,41 @@ export default function Home() {
               </p>
 
               <div className="creed-items flex flex-col gap-5 pt-5 border-t">
-                <div className="creed-item flex gap-3 items-start">
+                <motion.div
+                  className="creed-item flex gap-3 items-start"
+                  whileHover={{ x: 4 }}
+                >
                   <Database size={18} className="text-accent mt-0.5 shrink-0" />
                   <div>
                     <h4 className="font-semibold text-sm">Data Integrity First</h4>
                     <p className="text-xs text-muted mt-0.5">Normalized schemas (3NF) and indexed queries for performance.</p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="creed-item flex gap-3 items-start">
+                <motion.div
+                  className="creed-item flex gap-3 items-start"
+                  whileHover={{ x: 4 }}
+                >
                   <Layers size={18} className="text-secondary mt-0.5 shrink-0" />
                   <div>
                     <h4 className="font-semibold text-sm">Layered Architecture</h4>
                     <p className="text-xs text-muted mt-0.5">Decoupled services with clean separation of concerns.</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       <section className="featured-section container py-20">
-        <div className="section-header-row flex justify-between items-end mb-12">
+        <motion.div
+          className="section-header-row flex justify-between items-end mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div>
             <span className="section-subtitle-badge">Selected Work</span>
             <h2 className="section-main-heading">Featured Projects</h2>
@@ -150,15 +191,18 @@ export default function Home() {
           <Link to="/projects" className="text-link flex items-center gap-2 text-accent font-medium">
             View All <ArrowRight size={16} />
           </Link>
-        </div>
+        </motion.div>
 
         <div className="featured-grid grid grid-cols-1 md:grid-cols-2 gap-6">
           {featuredProjects.map((project, idx) => (
             <motion.div
               key={project.id}
-              className="featured-card glass-card"
-              {...fadeInUp}
-              transition={{ delay: idx * 0.1 }}
+              className="featured-card glass-card shimmer-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -5 }}
             >
               <div>
                 <span className="featured-card-id mb-3 block">PROJECT_{project.id}</span>
@@ -173,14 +217,16 @@ export default function Home() {
                     <span key={tag} className="tag-chip">{tag}</span>
                   ))}
                 </div>
-                <a
+                <motion.a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary btn-sm w-full"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   View Live <ExternalLink size={14} />
-                </a>
+                </motion.a>
               </div>
             </motion.div>
           ))}
@@ -189,18 +235,21 @@ export default function Home() {
 
       <section className="home-abstract container pb-20">
         <motion.div
-          className="abstract-card glass-card text-center py-16"
+          className="abstract-card glass-card shimmer-card text-center py-16"
+          initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          initial={{ opacity: 0, scale: 0.98 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <h2 className="abstract-heading text-2xl font-bold mb-5">Academic Excellence Meets Real-World Experience</h2>
           <p className="abstract-text text-muted max-w-xl mx-auto mb-8 leading-relaxed">
             Triple academic gold medals in Information Technology, backed by hands-on internship experience building production applications at Kalsun Groups.
           </p>
-          <Link to="/about" className="btn btn-outline btn-sm">
-            Read My Story
-          </Link>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link to="/about" className="btn btn-outline btn-sm">
+              Read My Story
+            </Link>
+          </motion.div>
         </motion.div>
       </section>
     </div>

@@ -19,15 +19,25 @@ export default function Experience() {
   return (
     <div className="page-fade-in experience-page container">
       <header className="page-header">
-        <span className="page-subtitle">Experience & Credentials</span>
-        <h1 className="page-title text-gradient">My Journey</h1>
+        <motion.span
+          className="page-subtitle"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+        >Experience & Credentials</motion.span>
+        <motion.h1
+          className="page-title text-gradient"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+        >My Journey</motion.h1>
       </header>
 
       <div className="experience-timeline-grid grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
         <motion.div
           className="timeline-column"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
           <div className="flex items-center gap-3 mb-8 pb-4 border-t">
@@ -35,9 +45,26 @@ export default function Experience() {
             <h2 className="text-xl font-bold">Work Experience</h2>
           </div>
 
-          <div className="timeline-track">
-            <div className="timeline-dot"></div>
-            <div className="timeline-node-card glass-card">
+          <motion.div
+            className="timeline-track"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <motion.div
+              className="timeline-dot"
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, type: 'spring' }}
+            />
+            <motion.div
+              className="timeline-node-card glass-card shimmer-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
               <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
                 <div>
                   <span className="text-xs font-mono font-semibold text-accent uppercase tracking-widest block mb-1">Kalsun Groups</span>
@@ -60,20 +87,28 @@ export default function Experience() {
 
               <ul className="space-y-3">
                 {internshipTasks.map((task, idx) => (
-                  <li key={idx} className="flex gap-3 items-start">
+                  <motion.li
+                    key={idx}
+                    className="flex gap-3 items-start"
+                    initial={{ opacity: 0, x: -15 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 + idx * 0.1 }}
+                  >
                     <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 shrink-0"></div>
                     <p className="text-sm text-muted leading-relaxed">{task}</p>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </motion.div>
 
         <motion.div
           className="timeline-info-column"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
           <div className="flex items-center gap-3 mb-8 pb-4 border-t">
@@ -83,10 +118,18 @@ export default function Experience() {
 
           <div className="space-y-3 mb-12">
             {certifications.map((cert, idx) => (
-              <div key={idx} className="certificate-item-card glass-card">
+              <motion.div
+                key={idx}
+                className="certificate-item-card glass-card shimmer-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.08, duration: 0.5 }}
+                whileHover={{ x: 4 }}
+              >
                 <div className="flex justify-between items-start gap-4">
                   <div>
-                    <h4 className="font-semibold group-hover:text-accent transition-colors text-sm">{cert.name}</h4>
+                    <h4 className="font-semibold text-sm">{cert.name}</h4>
                     <span className="text-[10px] font-mono text-accent uppercase tracking-widest mt-1 block">{cert.provider}</span>
                   </div>
                   <span className="text-[9px] px-2 py-0.5 rounded font-semibold uppercase shrink-0 text-accent" style={{ background: 'var(--color-accent-soft)', border: '1px solid var(--color-border-glow)' }}>Verified</span>
@@ -94,7 +137,7 @@ export default function Experience() {
                 <div className="mt-3 pt-3 border-t">
                   <span className="text-[9px] font-mono text-muted uppercase">ID: {cert.id}</span>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -108,13 +151,21 @@ export default function Experience() {
               { title: 'Triple Gold Medalist', icon: Star, detail: 'First place in the IT Department across three consecutive years (2023, 2024, 2025).' },
               { title: 'Hackathon Runner-Up', icon: Award, detail: '2nd place out of 40+ competing teams at the Inner College Hackathon (2025).' }
             ].map((honor, idx) => (
-              <div key={idx} className="honor-item-card glass-card">
+              <motion.div
+                key={idx}
+                className="honor-item-card glass-card shimmer-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                whileHover={{ scale: 1.02 }}
+              >
                 <div className="flex items-center gap-3 mb-2">
                   <honor.icon size={18} className="text-secondary" />
                   <h4 className="font-semibold text-sm">{honor.title}</h4>
                 </div>
                 <p className="text-muted text-xs leading-relaxed">{honor.detail}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
