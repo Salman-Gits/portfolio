@@ -45,12 +45,12 @@ export default function Education() {
       </motion.div>
 
       {/* Achievements */}
-      <div className="mb-8">
+      <div className="mb-10">
         <span className="section-label">Achievements</span>
         <h2 className="section-title">Recognition & Awards</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
         {achievements.map((item, idx) => (
           <motion.div
             key={idx}

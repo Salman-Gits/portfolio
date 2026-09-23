@@ -45,7 +45,7 @@ export default function Contact() {
         <motion.h1 className="page-title" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>Contact</motion.h1>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
         {/* Contact Info */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -58,7 +58,7 @@ export default function Contact() {
             Available for full-time Software Developer and Full Stack Developer roles, as well as freelance projects. I respond within 24 hours.
           </p>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-4">
             {contactInfo.map((info, idx) => {
               const Tag = info.href ? motion.a : motion.div
               return (

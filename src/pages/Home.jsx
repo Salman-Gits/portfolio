@@ -129,7 +129,7 @@ export default function Home() {
       </section>
 
       {/* Featured Project */}
-      <section className="container py-16">
+      <section className="container py-20">
         <motion.div
           className="flex justify-between items-end mb-8"
           initial={{ opacity: 0, y: 16 }}
@@ -189,7 +189,7 @@ export default function Home() {
       </section>
 
       {/* Other Projects Preview */}
-      <section className="container py-16">
+      <section className="container py-20">
         <motion.div
           className="mb-8"
           initial={{ opacity: 0, y: 16 }}
@@ -201,7 +201,7 @@ export default function Home() {
           <h2 className="section-title">Other Work</h2>
         </motion.div>
 
-        <div className="projects-grid grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="projects-grid grid grid-cols-1 md:grid-cols-3 gap-6">
           {otherProjects.map((project, idx) => (
             <motion.div
               key={project.id}
@@ -237,7 +237,7 @@ export default function Home() {
       </section>
 
       {/* Resume CTA */}
-      <section className="container py-16 pb-24">
+      <section className="container py-20 pb-28">
         <motion.div
           className="resume-cta"
           initial={{ opacity: 0, y: 20 }}
