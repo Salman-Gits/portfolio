@@ -17,13 +17,13 @@ export default function Education() {
 
       {/* Education Card */}
       <motion.div
-        className="card mb-12"
+        className="card mb-14"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <div className="flex items-start gap-4">
+        <div className="flex items-start gap-5">
           <div className="skill-category-icon shrink-0">
             <GraduationCap size={24} />
           </div>
@@ -45,12 +45,12 @@ export default function Education() {
       </motion.div>
 
       {/* Achievements */}
-      <div className="mb-10">
+      <div className="mb-12">
         <span className="section-label">Achievements</span>
         <h2 className="section-title">Recognition & Awards</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-28">
         {achievements.map((item, idx) => (
           <motion.div
             key={idx}
@@ -60,7 +60,7 @@ export default function Education() {
             viewport={{ once: true }}
             transition={{ delay: idx * 0.08, duration: 0.4 }}
           >
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-3 mb-4">
               <div className="skill-category-icon">
                 <item.icon size={20} />
               </div>

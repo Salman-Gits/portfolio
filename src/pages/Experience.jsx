@@ -23,7 +23,7 @@ export default function Experience() {
         <motion.h1 className="page-title" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>My Journey</motion.h1>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-28">
         {/* Work Experience */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -45,7 +45,7 @@ export default function Experience() {
               viewport={{ once: true }}
               transition={{ delay: 0.15, duration: 0.4 }}
             >
-              <div className="flex flex-col md:flex-row justify-between items-start gap-3 mb-4">
+              <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-5">
                 <div>
                   <span className="text-xs font-mono text-accent uppercase tracking-wider block mb-1">Kalsun Groups</span>
                   <h3 className="font-bold text-base">Full Stack Developer Intern</h3>
@@ -55,17 +55,17 @@ export default function Experience() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-1.5 mb-4">
+              <div className="flex flex-wrap gap-2 mb-5">
                 {['React.js', 'Java', 'Spring Boot', 'MySQL', 'JPA', 'Hibernate'].map(tech => (
                   <span key={tech} className="tag-chip">{tech}</span>
                 ))}
               </div>
 
-              <p className="text-muted text-sm leading-relaxed mb-4">
+              <p className="text-muted text-sm leading-relaxed mb-5">
                 Joined the development team to help scale client-facing applications. Contributed to building Spring-based REST endpoints and optimizing database schemas.
               </p>
 
-              <ul className="space-y-2.5">
+              <ul className="space-y-4">
                 {internshipTasks.map((task, idx) => (
                   <motion.li
                     key={idx}
@@ -91,12 +91,12 @@ export default function Experience() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-2 mb-6">
+          <div className="flex items-center gap-2 mb-8">
             <CheckCircle2 size={20} className="text-accent" />
             <h2 className="text-lg font-bold">Certifications</h2>
           </div>
 
-          <div className="space-y-4 mb-12">
+          <div className="space-y-5 mb-14">
             {certifications.map((cert, idx) => (
               <motion.div
                 key={idx}
@@ -113,7 +113,7 @@ export default function Experience() {
                   </div>
                   <span className="feature-badge shrink-0">Verified</span>
                 </div>
-                <div className="mt-2.5 pt-2.5 border-t" style={{ borderColor: 'var(--color-border)' }}>
+                <div className="mt-3 pt-3 border-t" style={{ borderColor: 'var(--color-border)' }}>
                   <span className="text-[9px] font-mono text-subtle uppercase">ID: {cert.id}</span>
                 </div>
               </motion.div>

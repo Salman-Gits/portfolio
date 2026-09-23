@@ -129,9 +129,9 @@ export default function Home() {
       </section>
 
       {/* Featured Project */}
-      <section className="container py-20">
+      <section className="container py-24">
         <motion.div
-          className="flex justify-between items-end mb-8"
+          className="flex justify-between items-end mb-10"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -159,19 +159,19 @@ export default function Home() {
               <span className="feature-badge">Full Stack</span>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
               <div>
-                <h3 className="text-xl font-bold mb-1">Blood Bank Hub</h3>
-                <span className="project-card-subtitle block mb-4">Healthcare Platform</span>
-                <p className="text-muted text-sm leading-relaxed mb-5">{featuredProject.description}</p>
-                <div className="flex flex-wrap gap-2 mb-5">
+                <h3 className="text-xl font-bold mb-2">Blood Bank Hub</h3>
+                <span className="project-card-subtitle block mb-5">Healthcare Platform</span>
+                <p className="text-muted text-sm leading-relaxed mb-6">{featuredProject.description}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
                   {featuredProject.tags.map(tag => <span key={tag} className="tag-chip">{tag}</span>)}
                 </div>
               </div>
 
               <div>
-                <p className="text-xs font-mono text-accent uppercase tracking-wider mb-3">Key Features</p>
-                <div className="project-feature-list mb-5">
+                <p className="text-xs font-mono text-accent uppercase tracking-wider mb-4">Key Features</p>
+                <div className="project-feature-list mb-6">
                   {featuredProject.features.map(f => <span key={f} className="feature-badge">{f}</span>)}
                 </div>
                 <div className="flex gap-3">
@@ -189,9 +189,9 @@ export default function Home() {
       </section>
 
       {/* Other Projects Preview */}
-      <section className="container py-20">
+      <section className="container py-24">
         <motion.div
-          className="mb-8"
+          className="mb-10"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -201,7 +201,7 @@ export default function Home() {
           <h2 className="section-title">Other Work</h2>
         </motion.div>
 
-        <div className="projects-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="projects-grid grid grid-cols-1 md:grid-cols-3 gap-8">
           {otherProjects.map((project, idx) => (
             <motion.div
               key={project.id}
@@ -212,18 +212,18 @@ export default function Home() {
               transition={{ delay: idx * 0.08, duration: 0.4 }}
             >
               <div>
-                <span className="project-card-id block mb-2">PROJECT_{project.id}</span>
+                <span className="project-card-id block mb-3">PROJECT_{project.id}</span>
                 <h3 className="project-card-title">{project.title}</h3>
-                <span className="project-card-subtitle block mb-3">{project.subtitle}</span>
-                <p className="text-muted text-sm leading-relaxed mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-1.5 mb-4">
+                <span className="project-card-subtitle block mb-4">{project.subtitle}</span>
+                <p className="text-muted text-sm leading-relaxed mb-5">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-5">
                   {project.tags.map(tag => <span key={tag} className="tag-chip">{tag}</span>)}
                 </div>
-                <div className="project-feature-list mb-4">
+                <div className="project-feature-list mb-5">
                   {project.features.map(f => <span key={f} className="feature-badge">{f}</span>)}
                 </div>
               </div>
-              <div className="flex gap-2 mt-auto pt-4 border-t" style={{ borderColor: 'var(--color-border)' }}>
+              <div className="flex gap-2 mt-auto pt-5 border-t" style={{ borderColor: 'var(--color-border)' }}>
                 <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm flex-1">
                   <ExternalLink size={14} /> Demo
                 </a>
@@ -237,7 +237,7 @@ export default function Home() {
       </section>
 
       {/* Resume CTA */}
-      <section className="container py-20 pb-28">
+      <section className="container py-24 pb-32">
         <motion.div
           className="resume-cta"
           initial={{ opacity: 0, y: 20 }}

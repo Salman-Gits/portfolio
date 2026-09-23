@@ -45,7 +45,7 @@ export default function Contact() {
         <motion.h1 className="page-title" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>Contact</motion.h1>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-28">
         {/* Contact Info */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -53,12 +53,12 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-xl font-bold mb-3">Let's build something together.</h2>
-          <p className="text-muted text-sm mb-8 max-w-md leading-relaxed">
+          <h2 className="text-xl font-bold mb-4">Let's build something together.</h2>
+          <p className="text-muted text-sm mb-10 max-w-md leading-relaxed">
             Available for full-time Software Developer and Full Stack Developer roles, as well as freelance projects. I respond within 24 hours.
           </p>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-5">
             {contactInfo.map((info, idx) => {
               const Tag = info.href ? motion.a : motion.div
               return (
@@ -94,7 +94,7 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
         >
           <div className="card">
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-2 mb-8">
               <div className="status-dot"></div>
               <h3 className="text-xs font-mono font-semibold tracking-wider text-accent uppercase">Send a Message</h3>
             </div>
@@ -111,8 +111,8 @@ export default function Contact() {
                 <button onClick={() => setFormState('idle')} className="btn btn-outline btn-sm">Send Another</button>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="floating-input-group">
                     <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder=" " id="issuer-name" className="form-input" />
                     <label htmlFor="issuer-name" className="form-label">Your Name</label>

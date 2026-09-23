@@ -33,7 +33,7 @@ export default function Skills() {
       </header>
 
       <motion.p
-        className="text-muted text-sm max-w-lg mb-16 leading-relaxed"
+        className="text-muted text-sm max-w-lg mb-20 leading-relaxed"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.15 }}
@@ -41,7 +41,7 @@ export default function Skills() {
         Technologies I use to build full-stack web applications — from responsive frontend interfaces to REST API design and database management.
       </motion.p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-28">
         {categories.map((cat, idx) => (
           <motion.div
             key={cat.title}
@@ -57,7 +57,7 @@ export default function Skills() {
               </div>
               <h3 className="font-bold text-base">{cat.title}</h3>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3">
               {cat.skills.map((skill) => (
                 <div key={skill} className="skill-item">
                   <span>{skill}</span>
