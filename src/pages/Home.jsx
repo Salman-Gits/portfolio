@@ -129,9 +129,9 @@ export default function Home() {
       </section>
 
       {/* Featured Project */}
-      <section className="container py-24">
+      <section className="container py-32">
         <motion.div
-          className="flex justify-between items-end mb-10"
+          className="flex justify-between items-end mb-14"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -189,9 +189,9 @@ export default function Home() {
       </section>
 
       {/* Other Projects Preview */}
-      <section className="container py-24">
+      <section className="container py-32">
         <motion.div
-          className="mb-10"
+          className="mb-14"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -237,7 +237,7 @@ export default function Home() {
       </section>
 
       {/* Resume CTA */}
-      <section className="container py-24 pb-32">
+      <section className="container py-32 pb-40">
         <motion.div
           className="resume-cta"
           initial={{ opacity: 0, y: 20 }}

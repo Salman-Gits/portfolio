@@ -17,7 +17,7 @@ export default function Education() {
 
       {/* Education Card */}
       <motion.div
-        className="card mb-14"
+        className="card mb-20"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -45,12 +45,12 @@ export default function Education() {
       </motion.div>
 
       {/* Achievements */}
-      <div className="mb-12">
+      <div className="mb-16">
         <span className="section-label">Achievements</span>
         <h2 className="section-title">Recognition & Awards</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-28">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-36">
         {achievements.map((item, idx) => (
           <motion.div
             key={idx}

@@ -23,7 +23,7 @@ export default function Experience() {
         <motion.h1 className="page-title" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>My Journey</motion.h1>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-28">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-36">
         {/* Work Experience */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -96,7 +96,7 @@ export default function Experience() {
             <h2 className="text-lg font-bold">Certifications</h2>
           </div>
 
-          <div className="space-y-5 mb-14">
+          <div className="space-y-5 mb-16">
             {certifications.map((cert, idx) => (
               <motion.div
                 key={idx}

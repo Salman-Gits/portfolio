@@ -154,8 +154,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 /* ==========================================
    Page Headers
    ========================================== */
-.page-header { padding: 8rem 0 4.5rem; }
-@media (max-width: 768px) { .page-header { padding: 5.5rem 0 3rem; } }
+.page-header { padding: 8rem 0 5rem; }
+@media (max-width: 768px) { .page-header { padding: 5.5rem 0 3.5rem; } }
 .page-subtitle {
   font-family: var(--font-mono); font-size: 0.75rem;
   color: var(--color-accent); letter-spacing: 0.15em;
@@ -250,8 +250,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 /* ==========================================
    Hero Section
    ========================================== */
-.hero-section { padding: 10rem 0 6rem; position: relative; }
-@media (max-width: 768px) { .hero-section { padding: 7rem 0 4rem; } }
+.hero-section { padding: 10rem 0 8rem; position: relative; }
+@media (max-width: 768px) { .hero-section { padding: 7rem 0 5rem; } }
 .hero-grid {
   display: grid; grid-template-columns: 1.3fr 0.7fr;
   gap: 5rem; align-items: center;

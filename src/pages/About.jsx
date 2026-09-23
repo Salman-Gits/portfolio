@@ -10,7 +10,7 @@ export default function About() {
         <motion.h1 className="page-title" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>Who I Am</motion.h1>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-28">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-36">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -71,7 +71,7 @@ export default function About() {
       </div>
 
       {/* Quick Info Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-28">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-36">
         <motion.div
           className="card"
           initial={{ opacity: 0, y: 20 }}
@@ -113,14 +113,14 @@ export default function About() {
 
       {/* What I'm Looking For */}
       <motion.section
-        className="mb-28"
+        className="mb-36"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
         <span className="section-label">What I'm Looking For</span>
-        <h2 className="section-title mb-10">Open to Software Developer & Full Stack Roles</h2>
+        <h2 className="section-title mb-14">Open to Software Developer & Full Stack Roles</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             { title: 'Full Stack Developer', desc: 'Roles involving both frontend and backend development with React and Java/Spring Boot.' },

@@ -70,7 +70,7 @@ export default function Projects() {
         <motion.h1 className="page-title" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>Projects</motion.h1>
       </header>
 
-      <div className="flex flex-wrap gap-2.5 mb-14 pb-4 border-b" style={{ borderColor: 'var(--color-border)' }}>
+      <div className="flex flex-wrap gap-2.5 mb-16 pb-4 border-b" style={{ borderColor: 'var(--color-border)' }}>
         {filters.map(tab => (
           <button
             key={tab.value}
@@ -88,7 +88,7 @@ export default function Projects() {
         ))}
       </div>
 
-      <motion.div layout className="projects-grid grid grid-cols-1 md:grid-cols-2 gap-8 mb-28">
+      <motion.div layout className="projects-grid grid grid-cols-1 md:grid-cols-2 gap-8 mb-36">
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project) => (
             <motion.div

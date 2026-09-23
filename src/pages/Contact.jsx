@@ -45,7 +45,7 @@ export default function Contact() {
         <motion.h1 className="page-title" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>Contact</motion.h1>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-28">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-36">
         {/* Contact Info */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
